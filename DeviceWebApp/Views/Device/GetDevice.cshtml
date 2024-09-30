@@ -1,48 +1,27 @@
-﻿@model string
+﻿@model DeviceWebApp.Models.DeviceViewModel
 
 @{
-    ViewData["Title"] = "Buscar Dispositivo via SNMP";
-
-    var ip = ViewBag.IP;
-    var oidWrite = ViewBag.OID;
+    ViewData["Title"] = "Consultar Dispositivo";
 }
 
-<h1>Buscar dispositivo via SNMP</h1>
+<h2>Consultar Dispositivo SNMP</h2>
 
-<form id="snmpForm">
-    <label for="ip">IP:</label>
-    <input type="text" id="ip" name="ip" value="@ViewBag.IP" />
-
-    <label for="oid">OID:</label>
-    <input type="text" id="oid" name="oid" value="@ViewBag.OID" />
-
-    <button type="submit">Consultar SNMP</button>
+<form asp-action="GetDevice" method="post">
+    <div>
+        <label for="Ip">IP:</label>
+        <input type="text" id="Ip" name="Ip" required />
+    </div>
+    <div>
+        <label for="OID">OID:</label>
+        <input type="text" id="OID" name="OID" required />
+    </div>
+    <button type="submit">Consultar</button>
 </form>
 
-<div id="result"></div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#snmpform').on('submit', function (e) {
-            e.preventdefault(); // impede o envio padrão do formulário
-
-            var ip = $('#ip').val();
-            var oidwrite = $('#oid').val();
-
-            $.ajax({
-                url: '/devices/', // o endpoint que você configurou
-                type: 'get', // usa o método get
-                data: { ip: ip, oidWrite: oidWrite },
-                success: function (data) {
-                    $('#result').html('<p>Valor recebido: ' + data + '</p>');
-                },
-                error: function (xhr) {
-                    $('#result').html('<p>Erro: ' + xhr.responseText + '</p>');
-                }
-            });
-        });
-    });
-</script>
-
-
+@if (Model?.Result != null)
+{
+    <div>
+        <h3>Resultado:</h3>
+        <p>@Model.Result</p>
+    </div>
+}

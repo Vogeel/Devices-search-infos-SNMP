@@ -3,11 +3,7 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Escolha a ação desejada:</p>
-
-    <!-- Botão que leva à tela de busca -->
-    <form asp-controller="Device" asp-action="GetDevice">
-        <button type="submit">Buscar Dispositivo via SNMP</button>
-    </form>
+    <h1 class="display-4">Bem-vindo ao Dispositivo SNMP</h1>
+    <p>Pressione o botão abaixo para consultar um dispositivo.</p>
+    <a class="btn btn-primary" href="/Device/GetDevice">Consultar Dispositivo</a>
 </div>

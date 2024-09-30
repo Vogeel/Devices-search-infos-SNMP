@@ -2,9 +2,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 
-// Injetar HttpClient e DeviceService
-builder.Services.AddHttpClient<DeviceService>();
+// Configure HttpClient with a base address
+builder.Services.AddHttpClient<DeviceService>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7055/"); // Set the base address for the API
+});
 
+builder.Services.AddScoped<DeviceService>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

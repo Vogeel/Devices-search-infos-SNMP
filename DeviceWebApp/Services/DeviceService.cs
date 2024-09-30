@@ -10,17 +10,30 @@ public class DeviceService
         _httpClient = httpClient;
     }
 
-    public async Task<string> GetDeviceByIp(string ip, string oidWrite)
+    public async Task<string> GetDeviceByIpAsync(string ip, string oidWrite)
     {
-        // Remova a verificação de parâmetros aqui
-        var response = await _httpClient.GetAsync($"https://localhost:7055/devices/{ip}?oidWrite={oidWrite}");
-
-        if (!response.IsSuccessStatusCode)
+        // Optional: Validate input parameters
+        if (string.IsNullOrWhiteSpace(ip) || string.IsNullOrWhiteSpace(oidWrite))
         {
-            var errorContent = await response.Content.ReadAsStringAsync();
-            throw new HttpRequestException($"Erro na requisição: {response.StatusCode}, Detalhes: {errorContent}");
+            throw new ArgumentException("IP and OID must not be empty.");
         }
 
-        return await response.Content.ReadAsStringAsync();
+        try
+        {
+            // Build the URL with IP and OID
+            var response = await _httpClient.GetAsync($"devices?ip={ip}&oidWrite={oidWrite}");
+
+            // Check if the response was successful
+            response.EnsureSuccessStatusCode();
+
+            // Return the response content as string
+            return await response.Content.ReadAsStringAsync();
+        }
+        catch (HttpRequestException ex)
+        {
+            // Log or handle the error as needed
+            throw new HttpRequestException($"Error retrieving device: {ex.Message}");
+        }
     }
+
 }

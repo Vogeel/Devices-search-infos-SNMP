@@ -3,23 +3,27 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DeviceWebApp</title>
+    <title>@ViewData["Title"] - SNMP PROJECT</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/DeviceWebApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
+    <header>
+        <p>Teste Header</p>
     </header>
+
     <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        @RenderBody()
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2024 - Vitor Vogel
+            &copy; 2023 - Vitor Vogel SNMP
         </div>
     </footer>
+
+    <!-- Renderiza a seção Scripts, se ela existir -->
+    @RenderSection("Scripts", required: false)
+
 </body>
 </html>
