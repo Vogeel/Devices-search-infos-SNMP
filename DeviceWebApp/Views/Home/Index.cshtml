@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Escolha a ação desejada:</p>
+
+    <!-- Botão que leva à tela de busca -->
+    <form asp-controller="Device" asp-action="ShowGetDeviceForm">
+        <button type="submit">Buscar Dispositivo via SNMP</button>
+    </form>
+</div>

@@ -1,0 +1,6 @@
+@Devices_search_infos_SNMP_HostAddress = http://localhost:5147
+
+GET {{Devices_search_infos_SNMP_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
