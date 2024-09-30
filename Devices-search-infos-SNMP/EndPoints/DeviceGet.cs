@@ -9,7 +9,7 @@ namespace Devices_search_infos_SNMP.EndPoints
     {
         private const string Community = "public";
 
-        [HttpGet("/devices/{ip}")]
+        [HttpGet("/devices/")]
         public IActionResult GetValue(string ip, [FromQuery] string oidWrite)
         {
             if (string.IsNullOrEmpty(ip) || string.IsNullOrEmpty(oidWrite))
