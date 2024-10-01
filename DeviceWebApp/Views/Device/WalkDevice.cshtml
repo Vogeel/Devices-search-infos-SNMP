@@ -1,5 +1,23 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model DeviceWebApp.Models.DeviceViewModel
+
 @{
+    ViewData["Title"] = "Consultar Informações no Dispositivo";
+}
+
+<h2>Consultar Dispositivo SNMP</h2>
+
+<form asp-action="GetStaticInfoDevice" method="post">
+    <div>
+        <label for="Ip">IP:</label>
+        <input type="text" id="Ip" name="Ip" required />
+    </div>
+    <button type="submit">Consultar</button>
+</form>
+
+@if (Model?.Result != null)
+{
+    <div>
+        <h3>Resultado:</h3>
+        <p>@Model.Result</p>
+    </div>
 }

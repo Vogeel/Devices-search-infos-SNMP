@@ -27,4 +27,20 @@ public class DeviceService
         }
     }
 
+    public async Task<string> GetStaticsInfos(string ip)
+    {
+
+        try
+        {
+            var response = await _httpClient.GetAsync($"https://localhost:7055/devices?ip={ip}");
+
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadAsStringAsync();
+        }
+        catch (HttpRequestException ex)
+        {
+            throw new HttpRequestException($"Error retrieving device: {ex.Message}");
+        }
+    }
 }
