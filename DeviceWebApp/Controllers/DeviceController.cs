@@ -16,6 +16,11 @@ public class DeviceController : Controller
     {
         return View(new DeviceViewModel());
     }
+    [HttpGet]
+    public IActionResult WalkDevice()
+    {
+        return View(new DeviceViewModel());
+    }
 
     [HttpPost]
     public async Task<IActionResult> GetDevice(DeviceViewModel model)

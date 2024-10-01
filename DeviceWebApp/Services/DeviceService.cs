@@ -32,7 +32,7 @@ public class DeviceService
 
         try
         {
-            var response = await _httpClient.GetAsync($"https://localhost:7055/devices?ip={ip}");
+            var response = await _httpClient.GetAsync($"https://localhost:7055/devices/info?ip={ip}");
 
             response.EnsureSuccessStatusCode();
 
