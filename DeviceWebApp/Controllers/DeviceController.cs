@@ -14,17 +14,14 @@ public class DeviceController : Controller
     [HttpGet]
     public IActionResult GetDevice()
     {
-        return View(new DeviceViewModel()); // Retorna a view com um modelo vazio
+        return View(new DeviceViewModel());
     }
 
     [HttpPost]
     public async Task<IActionResult> GetDevice(DeviceViewModel model)
     {
-
-            // Chama o método para obter o dispositivo
             model.Result = await _deviceService.GetDeviceByIpAsync(model.IP, model.OID);
-        
 
-        return View(model); // Retorna a mesma view com o modelo preenchido
+        return View(model); 
     }
 }
