@@ -1,15 +1,19 @@
 ﻿@model SnmpWebApp.Models.DeviceViewModel
 
 @{
-    ViewData["Title"] = "Consultar Informações no Dispositivo";
+    ViewData["Title"] = "Consultar Dispositivo";
 }
 
 <h2>Consultar Dispositivo SNMP</h2>
 
-<form asp-action="WalkDevice" method="post">
+<form asp-action="GetDevice" method="post">
     <div>
         <label for="Ip">IP:</label>
         <input type="text" id="Ip" name="Ip" required />
+    </div>
+    <div>
+        <label for="OID">OID:</label>
+        <input type="text" id="OID" name="OID" required />
     </div>
     <button type="submit">Consultar</button>
 </form>

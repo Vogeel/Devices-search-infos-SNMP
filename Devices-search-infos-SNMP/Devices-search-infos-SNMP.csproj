@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DeviceWebApp\DeviceWebApp.csproj" />
+    <ProjectReference Include="..\SnmpWebApp\SnmpWebApp.csproj" />
   </ItemGroup>
 
 </Project>

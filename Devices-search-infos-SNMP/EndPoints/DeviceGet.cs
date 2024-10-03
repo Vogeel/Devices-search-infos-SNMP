@@ -64,8 +64,6 @@ namespace Devices_search_infos_SNMP.EndPoints
         {
             new Variable(new ObjectIdentifier(".1.3.6.1.2.1.1.5.0")), // Nome do dispositivo
             new Variable(new ObjectIdentifier(".1.3.6.1.2.1.1.4.0")), // Usuário logado
-            new Variable(new ObjectIdentifier(".1.3.6.1.2.1.25.4.2.1.2.18996")), // Aplicativo aberto
-            new Variable(new ObjectIdentifier(".1.3.6.1.2.1.25.6.3.1.2.10")), // Aplicativo aleatorio
             new Variable(new ObjectIdentifier("1.3.6.1.2.1.1.3.0")), // upTime
             new Variable(new ObjectIdentifier("1.3.6.1.2.1.1.1.0"))  // Descrição sys
         };
@@ -82,10 +80,8 @@ namespace Devices_search_infos_SNMP.EndPoints
             {
                 { "DeviceName", result[0].Data.ToString() },
                 { "Username", result[1].Data.ToString() },
-                { "RandomOpenedApp", result[2].Data.ToString() },
-                { "RandomInstalledApp", result[3].Data.ToString() },
-                { "upTime", result[4].Data.ToString() },
-                { "SysDesription", result[5].Data.ToString() }
+                { "upTime", result[2].Data.ToString() },
+                { "SysDescription", result[3].Data.ToString() }
             };
 
                     return Ok(response);

@@ -1,0 +1,29 @@
+﻿body {
+    background-color: blue;
+}
+
+.div-WalkDevice {
+    text-align: center; /* Centraliza o conteúdo da div */
+    margin: 20px 0; /* Margem superior e inferior */
+}
+
+    .div-WalkDevice p {
+        font-size: 18px; /* Tamanho da fonte do parágrafo */
+        color: #333; /* Cor do texto */
+        margin-bottom: 15px; /* Espaçamento abaixo do parágrafo */
+    }
+
+.div-WWalkDevice .btn {
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: white; /* Cor do texto */
+    padding: 12px 24px; /* Espaçamento interno do botão */
+    border: none; /* Remove a borda */
+    border-radius: 8px; /* Borda arredondada */
+    font-size: 16px; /* Tamanho da fonte do botão */
+    cursor: pointer; /* Cursor tipo pointer */
+    transition: background-color 0.3s ease; /* Transição suave para hover */
+}
+
+.div-WalkDevice .btn:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+}

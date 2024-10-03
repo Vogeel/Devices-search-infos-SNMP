@@ -29,7 +29,7 @@ public class DeviceController : Controller
 
         return View(model); 
     }
-    public async Task<IActionResult> GetStaticInfoDevice(DeviceViewModel model)
+    public async Task<IActionResult> WalkDevice(DeviceViewModel model)
     {
         model.Result = await _deviceService.GetStaticsInfos(model.IP);
 
