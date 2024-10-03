@@ -14,10 +14,22 @@
     <button type="submit">Consultar</button>
 </form>
 
-@if (Model?.Result != null)
+@if (Model != null)
 {
     <div>
         <h3>Resultado:</h3>
-        <p>@Model.Result</p>
+        <dl>
+            <dt>Device Name:</dt>
+            <dd>@Model.DeviceName</dd>
+
+            <dt>Username:</dt>
+            <dd>@Model.Username</dd>
+
+            <dt>Up Time:</dt>
+            <dd>@Model.UpTime</dd>
+
+            <dt>System Description:</dt>
+            <dd>@Model.SysDescription</dd>
+        </dl>
     </div>
 }
