@@ -5,6 +5,7 @@ public class DeviceService
 {
     private readonly HttpClient _httpClient;
 
+
     public DeviceService(HttpClient httpClient)
     {
         _httpClient = httpClient;

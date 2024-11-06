@@ -6,17 +6,18 @@
 
 <h2>Consultar Dispositivo SNMP</h2>
 
-<form asp-action="GetDevice" method="post">
+<form asp-action="GetDevicePost" method="post">
     <div>
         <label for="Ip">IP:</label>
         <input type="text" id="Ip" name="Ip" required />
     </div>
     <div>
         <label for="OID">OID:</label>
-        <input type="text" id="OID" name="OID" required />
+        <input type="text" id="OID" name="OID" value="@Model.OID" required />
     </div>
     <button type="submit">Consultar</button>
 </form>
+
 
 @if (Model?.Result != null)
 {

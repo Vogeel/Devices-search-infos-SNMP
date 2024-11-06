@@ -1,0 +1,239 @@
+﻿@using Microsoft.AspNetCore.Html
+@model SnmpWebApp.Models.DeviceViewModel
+
+@{
+    ViewData["Title"] = "Informações sobre SNMP";
+}
+
+<h2>Lista de Oids para informações</h2>
+
+<form asp-action="SnmpInfo" method="dialog">
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Valor Oid</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.1.5.0", "Device Name")
+                </td>
+                <td>1.3.6.1.2.1.1.5.0</td>
+                <td>Nome do dispositivo SNMP</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.4.1.77.1.2.25", "User Name")
+                </td>
+                <td>1.3.6.1.4.1.77.1.2.25</td>
+                <td>Usuário para autenticação</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.1.3.0", "UpTime")
+                </td>
+                <td>1.3.6.1.2.1.1.3.0</td>
+                <td>Tempo de atividade do dispositivo</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.1.1.0", "System Descryption")
+                </td>
+                <td>1.3.6.1.2.1.1.1.0</td>
+                <td>Descrição do sistema SNMP</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.1.4.0", "System Contact")
+                </td>
+                <td>1.3.6.1.2.1.1.4.0</td>
+                <td>Informações de contato do administrador</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.1.6.0", "System Location")
+                </td>
+                <td>1.3.6.1.2.1.1.6.0</td>
+                <td>Localização do dispositivo</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.4.20", "Ip Address Table")
+                </td>
+                <td>1.3.6.1.2.1.4.20</td>
+                <td>Tabela de endereços IP do dispositivo</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.2.2.1.6", "Mac Address")
+                </td>
+                <td>1.3.6.1.2.1.2.2.1.6</td>
+                <td>Endereço MAC da interface de rede</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.1.5.0", "Hostname")
+                </td>
+                <td>1.3.6.1.2.1.1.5.0</td>
+                <td>Nome do host do dispositivo</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.4.1.2021.11.10.0", "CPU Load")
+                </td>
+                <td>1.3.6.1.4.1.2021.11.10.0</td>
+                <td>Carga atual da CPU</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.4.1.2021.4.5.0", "Total Memory")
+                </td>
+                <td>1.3.6.1.4.1.2021.4.5.0</td>
+                <td>Quantidade total de memória RAM</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.4.1.2021.4.6.0", "Avaliable Memory")
+                </td>
+                <td>1.3.6.1.4.1.2021.4.6.0</td>
+                <td>Memória RAM disponível</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.25.2.3.1.5", "Disk Storage")
+                </td>
+                <td>1.3.6.1.2.1.25.2.3.1.5</td>
+                <td>Capacidade total de armazenamento do disco</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.4.1.2021.9.1.7", "Free Disk Space")
+                </td>
+                <td>1.3.6.1.4.1.2021.9.1.7</td>
+                <td>Espaço livre em disco</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.25.1.6.0", "Process count")
+                </td>
+                <td>1.3.6.1.2.1.25.1.6.0</td>
+                <td>Número total de processos em execução</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.4.1.77.1.2.25", "System users")
+                </td>
+                <td>1.3.6.1.4.1.77.1.2.25</td>
+                <td>Usuários conectados ao sistema</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.2.2.1", "Network Interface List")
+                </td>
+                <td>1.3.6.1.2.1.2.2.1</td>
+                <td>Lista de interfaces de rede disponíveis</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.2.2.1.5", "Network Interface Speed")
+                </td>
+                <td>1.3.6.1.2.1.2.2.1.5</td>
+                <td>Velocidade de uma interface de rede específica</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.2.2.1.10", "Inbound Network Traffic")
+                </td>
+                <td>1.3.6.1.2.1.2.2.1.10</td>
+                <td>Tráfego de entrada na interface de rede</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.2.2.1.16", "Outbound Network Traffic")
+                </td>
+                <td>1.3.6.1.2.1.2.2.1.16</td>
+                <td>Tráfego de saída na interface de rede</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.2.2.1.14", "Error Packets Inbound")
+                </td>
+                <td>1.3.6.1.2.1.2.2.1.14</td>
+                <td>Pacotes com erro recebidos na interface de rede</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.2.2.1.20", "Error Packets Outbound")
+                </td>
+                <td>1.3.6.1.2.1.2.2.1.20</td>
+                <td>Pacotes com erro enviados pela interface de rede</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.25.4.2.1.2", "Running SoftwareTable")
+                </td>
+                <td>1.3.6.1.2.1.25.4.2.1.2</td>
+                <td>Lista de softwares em execução no sistema</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.25.6.3.1.2", "Installed Software Table")
+                </td>
+                <td>1.3.6.1.2.1.25.6.3.1.2</td>
+                <td>Lista de softwares instalados no sistema</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.2.1.25.3.3.1.2", "Processor Load")
+                </td>
+                <td>1.3.6.1.2.1.25.3.3.1.2</td>
+                <td>Carga do processador (por núcleo)</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.4.1.2021.4.11.0", "Physical Memory Used")
+                </td>
+                <td>1.3.6.1.4.1.2021.4.11.0</td>
+                <td>Quantidade de memória física em uso</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.4.1.2021.4.15.0", "Virtual Memory Used")
+                </td>
+                <td>1.3.6.1.4.1.2021.4.15.0</td>
+                <td>Quantidade de memória virtual em uso</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.4.1.2021.4.3.0", "Swap Space Total")
+                </td>
+                <td>1.3.6.1.4.1.2021.4.3.0</td>
+                <td>Total de espaço de swap disponível</td>
+            </tr>
+            <tr>
+                <td>
+                    @GenerateOidLink("1.3.6.1.4.1.2021.4.4.0", "Swap Space avalable")
+                </td>
+                <td>1.3.6.1.4.1.2021.4.4.0</td>
+                <td>Espaço de swap disponível</td>
+            </tr>
+        </tbody>
+    </table>
+
+    </tbody>
+    </table>
+</form>
+
+@functions {
+    public IHtmlContent GenerateOidLink(string oid, string nome)
+    {
+        return new HtmlString($"<a href='{Url.Action("GetDevice", "Device", new { oid = oid })}'>{nome}</a>");
+    }
+}
+
+
+

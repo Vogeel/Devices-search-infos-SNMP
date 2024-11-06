@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SnmpWebApp.Models;
+using System.Security.Cryptography;
 
 namespace SnmpWebApp.Controllers
 {
@@ -14,14 +15,24 @@ namespace SnmpWebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetDevice()
+        public IActionResult GetDevice(string oid = "")
         {
-            return View(new DeviceViewModel());
+            var model = new DeviceViewModel
+            {
+                OID = oid // Preenche o OID se ele for passado na URL
+            };
+
+            return View(model);
         }
         [HttpGet]
         public IActionResult WalkDevice()
         {
             return View(new DeviceViewModel());
+        }
+        [HttpGet]
+        public IActionResult SnmpInfo()
+        {
+            return View();
         }
 
         [HttpPost]
