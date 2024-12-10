@@ -15,7 +15,10 @@
         <label for="OID">OID:</label>
         <input type="text" id="OID" name="OID" value="@Model.OID" required />
     </div>
-    <button type="submit">Consultar</button>
+    <div>
+        <button type="submit" name="action" value="consult">Consultar</button>
+        <button type="submit" name="action" value="saveOnDataBase">Consultar e Gravar no banco</button>
+    </div>
 </form>
 
 

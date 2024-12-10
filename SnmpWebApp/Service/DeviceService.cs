@@ -1,4 +1,6 @@
-﻿using System.Net.Http;
+﻿using LiteDB;
+using SnmpWebApp.Models;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 public class DeviceService
@@ -44,4 +46,6 @@ public class DeviceService
             throw new HttpRequestException($"Error retrieving device: {ex.Message}");
         }
     }
+
+
 }

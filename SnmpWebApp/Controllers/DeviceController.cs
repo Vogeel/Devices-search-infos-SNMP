@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SnmpWebApp.Models;
-using System.Security.Cryptography;
+using SnmpWebApp.Service;
 
 namespace SnmpWebApp.Controllers
 {
     public class DeviceController : Controller
     {
         private readonly DeviceService _deviceService;
+        private readonly DataBaseService _dataBaseService = new();
 
         public DeviceController(DeviceService deviceService)
         {
@@ -15,11 +16,17 @@ namespace SnmpWebApp.Controllers
         }
 
         [HttpGet]
+        public IActionResult ListItens()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult GetDevice(string oid = "")
         {
             var model = new DeviceViewModel
             {
-                OID = oid // Preenche o OID se ele for passado na URL
+                OID = oid
             };
 
             return View(model);
@@ -36,11 +43,28 @@ namespace SnmpWebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetDevice(DeviceViewModel model)
+        public async Task<IActionResult> GetDevice(DeviceViewModel model, string action)
         {
-            model.Result = await _deviceService.GetDeviceByIpAsync(model.IP, model.OID);
+            try
+            {
+
+                if (action == "consult")
+                {
+                    model.Result = await _deviceService.GetDeviceByIpAsync(model.IP, model.OID);
+                }
+                else if (action == "saveOnDataBase")
+                {
+                    var result = await _deviceService.GetDeviceByIpAsync(model.IP, model.OID);
+                    model.Result = _dataBaseService.SaveResulInLiteDb(model, result);
+                }
+            }
+            catch
+            {
+                model.Result = $"Ao tentar fazer um GET na oid {model.OID}, retornou Erro.";
+            }
 
             return View(model);
+
         }
         public async Task<IActionResult> WalkDevice(DeviceViewModel model)
         {

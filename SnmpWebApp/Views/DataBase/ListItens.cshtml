@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "View";
+}
+
+@model List<DeviceViewModel>
+
+<h2>Lista de Dispositivos</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>OID</th>
+            <th>Descrição</th>
+            <th>Data</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var device in Model)
+        {
+            <tr>
+                <td>@device.Id</td>
+                <td>@device.OID</td>
+                <td>@device.Result</td>
+                <td>@device.Date.ToString("dd/MM/yyyy HH:mm")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
