@@ -1,0 +1,34 @@
+﻿@model SnmpWebApp.Models.DeviceViewModel
+
+@{
+    ViewData["Title"] = "Consultar Dispositivo";
+}
+
+<h2>Setar valor via SNMP</h2>
+
+<form asp-action="SetDevice" method="post">
+    <div>
+        <label for="Ip">IP:</label>
+        <input type="text" id="Ip" name="Ip" required />
+    </div>
+    <div>
+        <label for="OID">OID:</label>
+        <input type="text" id="OID" name="OID" value="@Model.OID" required />
+    </div>
+    <div>
+        <label for="newValue">Valor para ser Setado:</label>
+        <input type="text" id="newValue" name="newValue" value="@Model.newValue" required />
+    </div>
+    <div>
+        <button type="submit">Setar valor</button>
+    </div>
+</form>
+
+
+@if (Model?.Result != null)
+{
+    <div>
+        <h3>Resultado:</h3>
+        <p>@Model.Result</p>
+    </div>
+}

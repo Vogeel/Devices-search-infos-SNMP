@@ -22,6 +22,13 @@ namespace SnmpWebApp.Controllers
         }
 
         [HttpGet]
+        public IActionResult SetDevice()
+        {
+            DeviceViewModel model = new DeviceViewModel();
+            return View(model);
+        }
+
+        [HttpGet]
         public IActionResult GetDevice(string oid = "")
         {
             var model = new DeviceViewModel
@@ -40,6 +47,22 @@ namespace SnmpWebApp.Controllers
         public IActionResult SnmpInfo()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SetDevice(DeviceViewModel model)
+        {
+            try
+            {
+                model.Result = await _deviceService.SetDeviceByIpAsync(model.IP, model.OID, model.newValue);
+            }
+            catch
+            {
+                model.Result = $"Ao tentar fazer um Set na oid {model.OID}, retornou Erro.";
+            }
+
+            return View(model);
+
         }
 
         [HttpPost]
